@@ -12,43 +12,29 @@
       --shadow:0 12px 30px rgba(0,0,0,0.12);
     }
     *{box-sizing:border-box; margin:0; padding:0}
-    body{font-family:'Cairo',system-ui; background:linear-gradient(135deg,var(--bg1),var(--bg2)); min-height:100vh; display:flex; align-items:center; justify-content:center; padding:30px}.card{background:#ffffffdd; padding:40px; border-radius:24px; max-width:900px; width:100%; box-shadow:var(--shadow); position:relative; overflow:hidden}
+    body{font-family:'Cairo',system-ui; background:linear-gradient(135deg,var(--bg1),var(--bg2)); min-height:100vh; display:flex; align-items:center; justify-content:center; padding:30px}
+    .card{background:#ffffffdd; padding:40px; border-radius:24px; max-width:900px; width:100%; box-shadow:var(--shadow); position:relative; overflow:hidden}.title{font-size:54px; font-weight:900; color:var(--accent); text-align:center; margin-bottom:14px}
+.subtitle{text-align:center; font-size:20px; color:#333}.message{margin-top:30px; font-size:22px; line-height:1.6; color:#222; background:#ffffff66; padding:22px; border-radius:14px; text-align:center}
 
-.title{font-size:54px; font-weight:900; color:var(--accent); text-align:center; margin-bottom:14px}
-.subtitle{text-align:center; font-size:20px; color:#333}
+/* Balloons */ .balloons{position:absolute; inset:0; pointer-events:none} .balloon{position:absolute; animation:float 6s ease-in-out infinite} .left{left:-8%; bottom:-20px} .right{right:-8%; bottom:-20px}
 
-.message{margin-top:30px; font-size:22px; line-height:1.6; color:#222; background:#ffffff66; padding:22px; border-radius:14px; text-align:center}
+@keyframes float{ 0%{transform:translateY(0) rotate(-6deg)} 50%{transform:translateY(-160px) rotate(6deg)} 100%{transform:translateY(0) rotate(-6deg)} }
 
-/* Balloons */
-.balloons{position:absolute; inset:0; pointer-events:none}
-.balloon{position:absolute; animation:float 6s ease-in-out infinite}
-.left{left:-8%; bottom:-20px}
-.right{right:-8%; bottom:-20px}
-
-@keyframes float{
-  0%{transform:translateY(0) rotate(-6deg)}
-  50%{transform:translateY(-160px) rotate(6deg)}
-  100%{transform:translateY(0) rotate(-6deg)}
-}
-
-/* Confetti */
-.dot{position:absolute; width:10px; height:14px; border-radius:3px; animation:fly 4s linear infinite}
-@keyframes fly{
-  0%{transform:translateY(0) rotate(0); opacity:1}
-  100%{transform:translateY(-260px) rotate(600deg); opacity:0}
-}
+/* Confetti */ .dot{position:absolute; width:10px; height:14px; border-radius:3px; animation:fly 4s linear infinite} @keyframes fly{ 0%{transform:translateY(0) rotate(0); opacity:1} 100%{transform:translateY(-260px) rotate(600deg); opacity:0} }
 
   </style>
 </head>
 <body>
-  <div class="card"><h1 class="title">Joyeux Anniversaire Ranim 🎉</h1>
-<div class="subtitle">Que cette journée remplisse ton cœur de lumière, de douceur et de bonheur.</div>
-
-<div class="message">
-  Ranim, en ce jour spécial, je te souhaite tout l’amour, la joie et la paix que tu mérites. Que ton année soit pleine de réussite, de sourires et de beaux souvenirs. <strong>Profite de chaque instant.  from momo</strong>
-</div>
-
-<div class="balloons">
+  <audio autoplay loop>
+    <source src="Happy Birthday Song!!! (mp3cut.net).mp3" type="audio/mpeg">
+  </audio>
+  <div class="card">
+    <h1 class="title">Joyeux Anniversaire Ranim 🎉</h1>
+    <div class="subtitle">Que cette journée remplisse ton cœur de lumière, de douceur et de bonheur.</div>
+    <div class="message">
+      Ranim, en ce jour spécial, je te souhaite tout l’amour, la joie et la paix que tu mérites. Que ton année soit pleine de réussite, de sourires et de beaux souvenirs. <strong>Profite de chaque instant.</strong><br><br>
+      <em>From Momo</em>
+    </div><div class="balloons">
   <svg class="balloon left" width="260" height="420" viewBox="0 0 260 420">
     <ellipse cx="70" cy="140" rx="68" ry="86" fill="#ffb3c6" />
     <ellipse cx="160" cy="240" rx="56" ry="70" fill="#B4F8C8" />
@@ -61,7 +47,6 @@
     <ellipse cx="100" cy="60" rx="40" ry="50" fill="#FEC8D8" />
   </svg>
 
-  <!-- confetti -->
   <div class="dot" style="left:10%; bottom:15%; background:#ff6b6b; animation-delay:0s"></div>
   <div class="dot" style="left:25%; bottom:20%; background:#ffd166; animation-delay:0.3s"></div>
   <div class="dot" style="left:40%; bottom:18%; background:#6BCB77; animation-delay:0.6s"></div>
