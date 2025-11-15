@@ -1,165 +1,75 @@
-<!-- Happy Birthday page for Ranim
-     Use: save this file as Birthday_Ranim.html and open in a browser.
-     Edit the message, name, or image URL below as needed. --><!doctype html>
+<!doctype html>
 
-<html lang="en">
+<html lang="fr" dir="ltr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Happy Birthday, Ranim!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Joyeux Anniversaire Ranim</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg1:#FFDEE9; --bg2:#B5FFFC; --card:#ffffffcc; --accent:#ff6b6b;
-      --shadow: 0 10px 30px rgba(20,20,40,0.12);
+      --bg1:#ffecd2; --bg2:#fcb69f; --accent:#ff3cac;
+      --shadow:0 12px 30px rgba(0,0,0,0.12);
     }
-    *{box-sizing:border-box}
-    body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial; background:linear-gradient(135deg,var(--bg1),var(--bg2)); min-height:100vh; display:flex; align-items:center; justify-content:center; padding:30px}
-    .card{width:100%; max-width:900px; background:var(--card); border-radius:20px; box-shadow:var(--shadow); padding:28px; position:relative; overflow:hidden}
-    header{display:flex; gap:20px; align-items:center}
-    .avatar{width:120px; height:120px; border-radius:18px; overflow:hidden; flex:0 0 120px; border:6px solid rgba(255,255,255,0.6)}
-    .avatar img{width:100%; height:100%; object-fit:cover; display:block}
-    h1{margin:0; font-size:30px; letter-spacing:0.4px}
-    .subtitle{color:#444; margin-top:6px}.message{margin-top:18px; font-size:18px; line-height:1.5}
-.big{font-size:22px; font-weight:700; color:var(--accent)}
+    *{box-sizing:border-box; margin:0; padding:0}
+    body{font-family:'Cairo',system-ui; background:linear-gradient(135deg,var(--bg1),var(--bg2)); min-height:100vh; display:flex; align-items:center; justify-content:center; padding:30px}.card{background:#ffffffdd; padding:40px; border-radius:24px; max-width:900px; width:100%; box-shadow:var(--shadow); position:relative; overflow:hidden}
 
-.controls{display:flex; gap:10px; margin-top:18px}
-.btn{padding:10px 14px; border-radius:12px; border:0; background:#222; color:#fff; cursor:pointer}
-.btn.ghost{background:transparent; color:#222; border:1px solid rgba(0,0,0,0.08)}
+.title{font-size:54px; font-weight:900; color:var(--accent); text-align:center; margin-bottom:14px}
+.subtitle{text-align:center; font-size:20px; color:#333}
 
-/* balloons */
-.balloons{position:absolute; left:8px; bottom:-40px; pointer-events:none}
-.balloon{position:absolute; transform-origin:center bottom; animation:float 6s ease-in-out infinite;}
-.balloon:nth-child(1){left:8%; animation-delay:0s}
-.balloon:nth-child(2){left:24%; animation-delay:0.5s}
-.balloon:nth-child(3){left:40%; animation-delay:0.9s}
-.balloon:nth-child(4){left:60%; animation-delay:0.3s}
-.balloon:nth-child(5){left:80%; animation-delay:0.7s}
-@keyframes float{0%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-120px) rotate(3deg)}100%{transform:translateY(0) rotate(-3deg)}}
+.message{margin-top:30px; font-size:22px; line-height:1.6; color:#222; background:#ffffff66; padding:22px; border-radius:14px; text-align:center}
 
-/* confetti canvas sits on top */
-canvas#confetti{position:absolute; inset:0; width:100%; height:100%; pointer-events:none}
+/* Balloons */
+.balloons{position:absolute; inset:0; pointer-events:none}
+.balloon{position:absolute; animation:float 6s ease-in-out infinite}
+.left{left:-8%; bottom:-20px}
+.right{right:-8%; bottom:-20px}
 
-footer{display:flex; gap:14px; align-items:center; margin-top:20px}
-.note{flex:1}
+@keyframes float{
+  0%{transform:translateY(0) rotate(-6deg)}
+  50%{transform:translateY(-160px) rotate(6deg)}
+  100%{transform:translateY(0) rotate(-6deg)}
+}
 
-/* responsive */
-@media (max-width:640px){header{flex-direction:column; align-items:flex-start} .avatar{width:96px;height:96px}}
+/* Confetti */
+.dot{position:absolute; width:10px; height:14px; border-radius:3px; animation:fly 4s linear infinite}
+@keyframes fly{
+  0%{transform:translateY(0) rotate(0); opacity:1}
+  100%{transform:translateY(-260px) rotate(600deg); opacity:0}
+}
 
   </style>
 </head>
 <body>
-  <div class="card" role="main">
-    <canvas id="confetti"></canvas><header>
-  <div class="avatar" aria-hidden="true">
-    <!-- Replace the src with a picture URL of Ranim or leave the placeholder -->
-    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Ranim">
-  </div>
-  <div>
-    <h1>Happy Birthday, <span class="big">Ranim 🎉</span></h1>
-    <div class="subtitle">Wishing you joy, laughter and unforgettable moments today.</div>
-  </div>
-</header>
+  <div class="card"><h1 class="title">Joyeux Anniversaire Ranim 🎉</h1>
+<div class="subtitle">Que cette journée remplisse ton cœur de lumière, de douceur et de bonheur.</div>
 
-<p class="message">Hey Ranim — today is your special day! May it be filled with cake, surprises, and people who love you. You deserve a year of bright new beginnings and big smiles. <strong>Happy Birthday!</strong></p>
-
-<div class="controls">
-  <button class="btn" id="play">Play Confetti</button>
-  <button class="btn ghost" id="change">Change Name / Message</button>
-  <button class="btn ghost" id="download">Download HTML</button>
+<div class="message">
+  Ranim, en ce jour spécial, je te souhaite tout l’amour, la joie et la paix que tu mérites. Que ton année soit pleine de réussite, de sourires et de beaux souvenirs. <strong>Profite de chaque instant.  from momo</strong>
 </div>
 
-<footer>
-  <div class="note">Tip: click "Change Name / Message" to personalize the text or swap the photo.</div>
-  <div style="opacity:0.9">— From your friend</div>
-</footer>
+<div class="balloons">
+  <svg class="balloon left" width="260" height="420" viewBox="0 0 260 420">
+    <ellipse cx="70" cy="140" rx="68" ry="86" fill="#ffb3c6" />
+    <ellipse cx="160" cy="240" rx="56" ry="70" fill="#B4F8C8" />
+    <ellipse cx="200" cy="90" rx="42" ry="54" fill="#CDB4DB" />
+  </svg>
 
-<!-- decorative balloons -->
-<div class="balloons" aria-hidden="true">
-  <svg class="balloon" width="60" height="90" viewBox="0 0 60 90">
-    <ellipse cx="30" cy="30" rx="26" ry="28" fill="#FF9A9E" opacity="0.95" />
-    <path d="M30 58 C28 62,32 62,30 66" stroke="#e86f7a" stroke-width="2" fill="none" />
+  <svg class="balloon right" width="220" height="360" viewBox="0 0 220 360">
+    <ellipse cx="60" cy="120" rx="52" ry="70" fill="#FFF3B0" />
+    <ellipse cx="140" cy="220" rx="62" ry="82" fill="#A0E7E5" />
+    <ellipse cx="100" cy="60" rx="40" ry="50" fill="#FEC8D8" />
   </svg>
-  <svg class="balloon" width="50" height="75" viewBox="0 0 50 75">
-    <ellipse cx="25" cy="26" rx="22" ry="24" fill="#FECFEF" opacity="0.95" />
-    <path d="M25 52 C23 56,27 56,25 60" stroke="#d99bbf" stroke-width="2" fill="none" />
-  </svg>
-  <svg class="balloon" width="44" height="66" viewBox="0 0 44 66">
-    <ellipse cx="22" cy="24" rx="20" ry="22" fill="#A0E7E5" opacity="0.95"/>
-    <path d="M22 48 C20 52,24 52,22 56" stroke="#7fd3d0" stroke-width="2" fill="none" />
-  </svg>
-  <svg class="balloon" width="52" height="78" viewBox="0 0 52 78">
-    <ellipse cx="26" cy="28" rx="24" ry="26" fill="#FFD6A5" opacity="0.95"/>
-    <path d="M26 56 C24 60,28 60,26 64" stroke="#f0b37a" stroke-width="2" fill="none" />
-  </svg>
-  <svg class="balloon" width="58" height="82" viewBox="0 0 58 82">
-    <ellipse cx="29" cy="30" rx="26" ry="28" fill="#CDB4DB" opacity="0.95"/>
-    <path d="M29 60 C27 64,31 64,29 68" stroke="#b69fc9" stroke-width="2" fill="none" />
-  </svg>
+
+  <!-- confetti -->
+  <div class="dot" style="left:10%; bottom:15%; background:#ff6b6b; animation-delay:0s"></div>
+  <div class="dot" style="left:25%; bottom:20%; background:#ffd166; animation-delay:0.3s"></div>
+  <div class="dot" style="left:40%; bottom:18%; background:#6BCB77; animation-delay:0.6s"></div>
+  <div class="dot" style="left:55%; bottom:24%; background:#4d96ff; animation-delay:0.9s"></div>
+  <div class="dot" style="left:70%; bottom:22%; background:#c394ff; animation-delay:1.2s"></div>
+  <div class="dot" style="left:85%; bottom:19%; background:#ff9a9e; animation-delay:1.5s"></div>
 </div>
 
-  </div>  <script>
-    // Simple confetti on canvas (no libraries)
-    const canvas = document.getElementById('confetti');
-    const ctx = canvas.getContext('2d');
-    let W = canvas.width = canvas.offsetWidth;
-    let H = canvas.height = canvas.offsetHeight;
-    window.addEventListener('resize', ()=>{ W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight });
-
-    function rand(min,max){return Math.random()*(max-min)+min}
-    function createParticles(count){
-      const arr=[];
-      for(let i=0;i<count;i++){
-        arr.push({
-          x:rand(0,W), y:rand(-H,0), r:rand(6,12), d:rand(2,8),
-          vx:rand(-1.5,1.5), vy:rand(2,6),
-          color:['#ff6b6b','#ffd166','#6bcB77','#4d96ff','#c394ff'][Math.floor(rand(0,5))],
-          tilt:rand(-0.2,0.2)
-        })
-      }
-      return arr;
-    }
-    let particles = createParticles(120);
-    let running=false;
-    function update(){
-      ctx.clearRect(0,0,W,H);
-      for(let p of particles){
-        p.x += p.vx;
-        p.y += p.vy + Math.sin(p.d)*0.5;
-        p.tilt += 0.02;
-        ctx.save();
-        ctx.translate(p.x,p.y);
-        ctx.rotate(p.tilt);
-        ctx.fillStyle = p.color;
-        ctx.fillRect(-p.r/2, -p.r/2, p.r, p.r*0.6);
-        ctx.restore();
-        if(p.y>H+20){ p.y = rand(-H,-20); p.x = rand(0,W) }
-      }
-      if(running) requestAnimationFrame(update);
-    }
-
-    document.getElementById('play').addEventListener('click', ()=>{
-      if(!running){ running=true; update(); setTimeout(()=>running=false,6000) }
-    });
-
-    // Change name and message quickly (no prompt dialogs saved)
-    document.getElementById('change').addEventListener('click', ()=>{
-      const newName = prompt('Enter the new name to display', 'Ranim');
-      if(newName) document.querySelector('h1 .big').textContent = newName + ' 🎉';
-      const newMsg = prompt('Write a short birthday message', 'Have a wonderful birthday!');
-      if(newMsg) document.querySelector('.message').innerHTML = newMsg;
-      const newImg = prompt('Paste an image URL for the photo (or leave blank)', '');
-      if(newImg){ document.querySelector('.avatar img').src = newImg }
-    });
-
-    // Download current page as HTML file
-    document.getElementById('download').addEventListener('click', ()=>{
-      const html = '<!doctype html>\n' + document.documentElement.outerHTML;
-      const blob = new Blob([html],{type:'text/html'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a'); a.href = url; a.download = 'Birthday_Ranim.html'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-    });
-
-    // Auto-play confetti once on load
-    window.addEventListener('load', ()=>{ document.getElementById('play').click() });
-  </script></body>
+  </div>
+</body>
 </html>
