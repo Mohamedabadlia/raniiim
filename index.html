@@ -25,9 +25,19 @@
   </style>
 </head>
 <body>
-  <audio autoplay loop>
-    <source src="Happy Birthday Song!!! (mp3cut.net).mp3" type="audio/mpeg">
-  </audio>
+<button id="playMusic">🎵 Jouer la musique</button>
+<audio id="birthdayAudio" loop>
+  <source src="Happy Birthday Song!!! (mp3cut.net).mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const button = document.getElementById('playMusic');
+  const audio = document.getElementById('birthdayAudio');
+  button.addEventListener('click', () => {
+    audio.play();
+    button.style.display = 'none'; // إخفاء الزر بعد التشغيل
+  });
+</script>
   <div class="card">
     <h1 class="title">Joyeux Anniversaire Ranim 🎉</h1>
     <div class="subtitle">Que cette journée remplisse ton cœur de lumière, de douceur et de bonheur.</div>
